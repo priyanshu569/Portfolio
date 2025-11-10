@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Futuristic dark theme with neon accents */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Neon cyan primary */
+    --primary: 189 94% 43%;
+    --primary-foreground: 240 10% 3.9%;
+
+    /* Purple secondary */
+    --secondary: 271 91% 65%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted dark */
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Pink accent */
+    --accent: 330 85% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 189 94% 43%;
+
+    --radius: 0.75rem;
+
+    /* Gradient stops */
+    --gradient-from: 189 94% 43%;
+    --gradient-via: 271 91% 65%;
+    --gradient-to: 330 85% 60%;
+
+    /* Glow colors */
+    --glow-primary: 189 94% 43%;
+    --glow-secondary: 271 91% 65%;
+    --glow-accent: 330 85% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    cursor: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.5),
+                0 0 40px hsl(var(--glow-primary) / 0.3),
+                0 0 60px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px hsl(var(--glow-secondary) / 0.5),
+                0 0 40px hsl(var(--glow-secondary) / 0.3),
+                0 0 60px hsl(var(--glow-secondary) / 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--glow-accent) / 0.5),
+                0 0 40px hsl(var(--glow-accent) / 0.3),
+                0 0 60px hsl(var(--glow-accent) / 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--gradient-from)), 
+      hsl(var(--gradient-via)), 
+      hsl(var(--gradient-to))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+                linear-gradient(135deg, 
+                  hsl(var(--gradient-from)), 
+                  hsl(var(--gradient-via)), 
+                  hsl(var(--gradient-to))
+                ) border-box;
+  }
+}
